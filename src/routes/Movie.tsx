@@ -1,11 +1,27 @@
+import { useParams } from "react-router-dom"
+import useSWR from "swr";
+import { fetcher } from "../utils/tmdb";
+import Cast from "../components/Cast";
+
 export default function Movie () {
+    let { movieId } = useParams()
+
+    const {
+        data,
+        error,
+        isValidating,
+    } = useSWR(`${import.meta.env.VITE_TMDB_BASE_URL}/movie/${movieId}`, fetcher);
+
+    if (error) return <div className='failed'>failed to load</div>;
+    if (isValidating) return <div className="Loading">Loading...</div>;
+
     return (
         <>
-            <section className="bg-gray-800 text-white h-[60lvh]">
+            <section className="bg-gray-800 text-white h-[60lvh] bg-cover bg-top" style={{"backgroundImage": `url('https://image.tmdb.org/t/p/original${data.backdrop_path}')`}}>
                 <div className="w-full h-full bg-black-600/30 backdrop-brightness-50">
                     <div className="container mx-auto h-full relative">
                         <div className="w-1/2 absolute bottom-12">
-                            <h1 className="font-bold text-5xl mb-3">Movie Title</h1>
+                            <h1 className="font-bold text-5xl mb-3">{data.title}</h1>
                         </div>
                     </div>
                 </div>
@@ -14,42 +30,11 @@ export default function Movie () {
                 <div className="container mx-auto">
                     <div className="mb-6">
                         <h3 className="font-bold text-xl uppercase mb-3 text-gray-500">Description</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque soluta itaque sapiente accusamus modi architecto? Ut quis ipsa inventore beatae. Ipsa explicabo autem tempore maxime magni ea vitae sint fuga.</p>
+                        <p>{data.overview}</p>
                     </div>
                     <div className="">
                         <h3 className="font-bold text-xl uppercase mb-3 text-gray-500">Cast</h3>
-                        <ul className="grid grid-cols-12 gap-4">
-                            <li className="text-center">
-                                <figure className="rounded-full overflow-hidden mb-2">
-                                    <img src="https://picsum.photos/id/237/300/300" alt="Images"/>
-                                </figure>
-                                <h4 className="text-sm font-semibold">Name</h4>
-                            </li>
-                            <li className="text-center">
-                                <figure className="rounded-full overflow-hidden mb-2">
-                                    <img src="https://picsum.photos/id/237/300/300" alt="Images"/>
-                                </figure>
-                                <h4 className="text-sm font-semibold">Name</h4>
-                            </li>
-                            <li className="text-center">
-                                <figure className="rounded-full overflow-hidden mb-2">
-                                    <img src="https://picsum.photos/id/237/300/300" alt="Images"/>
-                                </figure>
-                                <h4 className="text-sm font-semibold">Name</h4>
-                            </li>
-                            <li className="text-center">
-                                <figure className="rounded-full overflow-hidden mb-2">
-                                    <img src="https://picsum.photos/id/237/300/300" alt="Images"/>
-                                </figure>
-                                <h4 className="text-sm font-semibold">Name</h4>
-                            </li>
-                            <li className="text-center">
-                                <figure className="rounded-full overflow-hidden mb-2">
-                                    <img src="https://picsum.photos/id/237/300/300" alt="Images"/>
-                                </figure>
-                                <h4 className="text-sm font-semibold">Name</h4>
-                            </li>
-                        </ul>
+                        <Cast movieId={data.id} />
                     </div>
                 </div>
             </section>
