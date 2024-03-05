@@ -24,7 +24,7 @@ export default function Search () {
                     {error && <div className='failed'>failed to load</div>}
                     {isValidating && <div className="Loading">Loading...</div>}
                     {!data?.results.length && <p className="text-center">No movies found</p>}
-                    <div className="grid grid-cols-5 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                         {data?.results &&
                             data?.results.map((movie: any) => 
                                 <MovieItem key={movie.id} {...movie} />)}

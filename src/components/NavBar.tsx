@@ -5,7 +5,7 @@ export default function NavBar () {
         <header className="absolute top-0 left-0 right-0 text-white z-10">
             <div className="container mx-auto">
                 <div className="flex justify-between items-center py-4">
-                    <nav>
+                    <nav className="hidden md:block">
                         <ul className="flex gap-4">
                             <li>
                                 <Link to="/" className="font-medium">Home</Link>

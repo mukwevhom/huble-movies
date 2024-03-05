@@ -21,7 +21,7 @@ export default function TrendingMovies () {
                     <h2 className="font-bold text-2xl">Trending</h2>
                     <Link to="/movies" className="py-2 px-4 rounded-full border border-black font-medium">See More <ArrowRightIcon className="inline w-4 h-4" /></Link>
                 </div>
-                <div className="grid grid-cols-5 gap-4 mt-4">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
                     {data.results &&
                         data.results.map((movie: any) => 
                             <MovieItem key={movie.id} {...movie} />)}

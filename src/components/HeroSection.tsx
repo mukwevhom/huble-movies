@@ -17,9 +17,9 @@ export default function HeroSection () {
         <section className="bg-gray-800 text-white h-[90lvh] bg-cover bg-center" style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}')` }}>
             <div className="w-full h-full bg-blue-600/30 backdrop-brightness-50">
                 <div className="container mx-auto h-full relative">
-                    <div className="w-1/2 absolute bottom-12">
+                    <div className="md:w-1/2 absolute bottom-12 left-8 md:left-8 right-8 md:right-8">
                         <h1 className="font-bold text-5xl mb-3">{data.results[0].title}</h1>
-                        <p>{data.results[0].overview}</p>
+                        <p className="line-clamp-3 md:line-clamp-4">{data.results[0].overview}</p>
                         <div className="flex gap-x-3 mt-6">
                             <Link to={`/movie/${data.results[0].id}`} className="py-2 px-4 rounded-full border border-white font-medium">More Info <ArrowRightIcon className="inline w-6 h-6" /> </Link>
                         </div>

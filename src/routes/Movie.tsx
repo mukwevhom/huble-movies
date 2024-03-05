@@ -20,7 +20,7 @@ export default function Movie () {
             <section className="bg-gray-800 text-white h-[60lvh] bg-cover bg-top" style={{"backgroundImage": `url('https://image.tmdb.org/t/p/original${data.backdrop_path}')`}}>
                 <div className="w-full h-full bg-black-600/30 backdrop-brightness-50">
                     <div className="container mx-auto h-full relative">
-                        <div className="w-1/2 absolute bottom-12">
+                        <div className="md:w-1/2 absolute bottom-12">
                             <h1 className="font-bold text-5xl mb-3">{data.title}</h1>
                         </div>
                     </div>
