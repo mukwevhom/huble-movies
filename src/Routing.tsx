@@ -11,7 +11,7 @@ export default function Routing () {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/search" element={<Search />} />
-                <Route path="/movie" element={<Movie />} />
+                <Route path="/movie/:movieId" element={<Movie />} />
             </Routes>
         </BrowserRouter>
     )

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBar () {
     return (
-        <header>
+        <header className="absolute top-0 left-0 right-0 text-white">
             <div className="container mx-auto">
                 <div className="flex justify-between items-center py-4">
                     <nav>
