@@ -23,3 +23,6 @@ With the above tools available, you are ready:
 4. Run the dev server
    ```npm run dev```
 
+## Demo
+
+You can preview the project [here](https://huble-movies.onrender.com)
