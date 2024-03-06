@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@heroicons/react/16/solid";
 import { Link } from "react-router-dom";
 import useSWR from "swr";
 import MovieItem from "./MovieItem";
+import MovieItemSkeleton from "./skeletons/MovieItemSkeleton";
 import { fetcher } from "../utils/tmdb";
 
 export default function TrendingMovies () {
@@ -22,8 +23,9 @@ export default function TrendingMovies () {
                     <Link to="/movies" className="py-2 px-4 rounded-full border border-black font-medium">See More <ArrowRightIcon className="inline w-4 h-4" /></Link>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
-                    {data.results &&
-                        data.results.map((movie: any) => 
+                    { isValidating && <MovieItemSkeleton />}
+                    {data?.results &&
+                        data?.results.map((movie: any) => 
                             <MovieItem key={movie.id} {...movie} />)}
                 </div>
             </div>
