@@ -14,7 +14,7 @@ export default function Cast ({movieId}: any) {
     return (
         <ul className="grid grid-cols-4 md:grid-cols-12 gap-4">
             {isValidating && <CastItemSkeleton />}
-            {data?.cast.map((cast: any) => (
+            {data?.cast && data?.cast.map((cast: any) => (
                 <li className="text-center">
                     <figure className="rounded-full overflow-hidden mb-2 aspect-square">
                         <img src={cast.profile_path ?`https://image.tmdb.org/t/p/w185${cast.profile_path}`: "https://via.placeholder.com/185"} alt={cast.name}/>
